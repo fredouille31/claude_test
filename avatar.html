@@ -121,267 +121,136 @@
   <body>
     <h2>Avatar homme</h2>
 
+    <!-- Les calques sont remplis par dessiner() à partir de l'état de l'avatar -->
     <div class="avatar">
-      <img id="base" src="images/base/base_homme.png" />
-      <img id="buste" src="images/base/buste1.png" />
-      <img id="nez" src="images/nez/nez1.png" />
-      <img id="bouche" src="images/bouche/bouche.png" />
-      <img id="yeux" src="images/yeux/yeux1.png" />
+      <img id="base" src="images/base/base_homme.png" alt="" />
+      <img id="buste" alt="" />
+      <img id="nez" alt="" />
+      <img id="bouche" src="images/bouche/bouche.png" alt="" />
+      <img id="yeux" alt="" />
       <canvas id="iris" width="400" height="600"></canvas>
-      <img id="marques" src="images/marques/marques1.png" style="display: none" />
-      <img id="sourcils" src="images/sourcils/sourcils1.png" />
-      <img id="pilosite" src="images/pilosite/pilosite1.png" style="display: none" />
-      <img id="cheveux" src="images/cheveux/coupe1.png" />
-      <img id="lisere" src="images/cheveux/lisere.png" style="display: none" />
-      <img id="chapeau" src="images/chapeau/chapeau1.png" style="display: none" />
+      <img id="marques" alt="" />
+      <img id="sourcils" alt="" />
+      <img id="pilosite" alt="" />
+      <img id="cheveux" alt="" />
+      <img id="lisere" alt="" />
+      <img id="chapeau" alt="" />
     </div>
 
-    <div class="options">
-      <label class="champ"
-        ><span>Buste</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="buste.style.display=&#x27;block&#x27;" selected>Buste 1</option>
-          <option value="buste.style.display=&#x27;none&#x27;">Sans buste</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Nez</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="nez.src=&#x27;images/nez/nez1.png&#x27;" selected>Nez 1</option>
-          <option value="nez.src=&#x27;images/nez/nez2.png&#x27;">Nez 2</option>
-          <option value="nez.src=&#x27;images/nez/nez3.png&#x27;">Nez 3</option>
-          <option value="nez.src=&#x27;images/nez/nez4.png&#x27;">Nez 4</option>
-          <option value="nez.src=&#x27;images/nez/nez5.png&#x27;">Nez 5</option>
-          <option value="nez.src=&#x27;images/nez/nez6.png&#x27;">Nez 6</option>
-          <option value="nez.src=&#x27;images/nez/nez7.png&#x27;">Nez 7</option>
-          <option value="nez.src=&#x27;images/nez/nez8.png&#x27;">Nez 8</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Forme du regard</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="changerRegard(1)" selected>Regard 1</option>
-          <option value="changerRegard(2)">Regard 2</option>
-          <option value="changerRegard(3)">Regard 3</option>
-          <option value="changerRegard(4)">Regard 4</option>
-          <option value="changerRegard(5)">Regard 5</option>
-          <option value="changerRegard(6)">Regard 6</option>
-          <option value="changerRegard(7)">Regard 7</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Couleur des yeux</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="couleurIris(&#x27;#3075b9&#x27;)">Bleu</option>
-          <option value="couleurIris(&#x27;#80c8e9&#x27;)">Bleu clair</option>
-          <option value="couleurIris(&#x27;#39864a&#x27;)">Vert</option>
-          <option value="couleurIris(&#x27;#9cbb5a&#x27;)">Vert clair</option>
-          <option value="couleurIris(&#x27;#d8ae2c&#x27;)">Jaune / ambre</option>
-          <option value="couleurIris(&#x27;#6c3e26&#x27;)">Marron</option>
-          <option value="couleurIris(&#x27;#a2783b&#x27;)">Noisette</option>
-          <option value="couleurIris(&#x27;#92999d&#x27;)" selected>Gris</option>
-          <option value="couleurIris(&#x27;#8553a6&#x27;)">Violet</option>
-          <option value="couleurIris(&#x27;#b43e3e&#x27;)">Rouge</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Sourcils</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils1.png&#x27;" selected>Sourcils 1</option>
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils2.png&#x27;">Sourcils 2</option>
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils3.png&#x27;">Sourcils 3</option>
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils4.png&#x27;">Sourcils 4</option>
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils5.png&#x27;">Sourcils 5</option>
-          <option value="sourcils.src=&#x27;images/sourcils/sourcils6.png&#x27;">Sourcils 6</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Marques du visage</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="document.getElementById(&#x27;marques&#x27;).style.display=&#x27;none&#x27;" selected>Aucune</option>
-          <option value="document.getElementById(&#x27;marques&#x27;).style.display=&#x27;block&#x27;">Marque 1</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Pilosité</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="barbe(&#x27;aucune&#x27;)" selected>Aucune</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite1.png&#x27;)">Pilosité 1</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite2.png&#x27;)">Pilosité 2</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite3.png&#x27;)">Pilosité 3</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite4.png&#x27;)">Pilosité 4</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite5.png&#x27;)">Pilosité 5</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite6.png&#x27;)">Pilosité 6</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite7.png&#x27;)">Pilosité 7</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite8.png&#x27;)">Pilosité 8</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite9.png&#x27;)">Pilosité 9</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite10.png&#x27;)">Pilosité 10</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite11.png&#x27;)">Pilosité 11</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite12.png&#x27;)">Pilosité 12</option>
-          <option value="barbe(&#x27;images/pilosite/pilosite13.png&#x27;)">Pilosité 13</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Coupe</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="changerCoupe(&#x27;aucune&#x27;)">Chauve</option>
-          <option value="changerCoupe(&#x27;images/cheveux/coupe0.png&#x27;)">Coupe 0</option>
-          <option value="changerCoupe(&#x27;images/cheveux/coupe1.png&#x27;)" selected>Coupe 1</option>
-          <option value="changerCoupe(&#x27;images/cheveux/coupe2.png&#x27;)">Coupe 2</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Couleur des cheveux, de la barbe et des sourcils</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="hair(&#x27;gris&#x27;)" selected>Gris (original)</option>
-          <option value="hair(&#x27;blond&#x27;)">Blond</option>
-          <option value="hair(&#x27;chatain&#x27;)">Châtain</option>
-          <option value="hair(&#x27;brun&#x27;)">Brun</option>
-          <option value="hair(&#x27;roux&#x27;)">Roux</option>
-          <option value="hair(&#x27;noir&#x27;)">Noir</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Peau (8 nuances progressives)</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="skin(&#x27;ivoire&#x27;)">1 · Ivoire</option>
-          <option value="skin(&#x27;pale&#x27;)">2 · Pâle chaud</option>
-          <option value="skin(&#x27;rose&#x27;)">3 · Clair rosé</option>
-          <option value="skin(&#x27;claire&#x27;)" selected>4 · Clair</option>
-          <option value="skin(&#x27;mediterraneen&#x27;)">5 · Méditerranéen</option>
-          <option value="skin(&#x27;mate&#x27;)">6 · Mat</option>
-          <option value="skin(&#x27;brun&#x27;)">7 · Brun</option>
-          <option value="skin(&#x27;foncee&#x27;)">8 · Foncé</option>
-        </select></label
-      >
-
-      <label class="champ"
-        ><span>Chapeau</span
-        ><select onchange="appliquerChoix(this.value)">
-          <option value="hat(true)">Chapeau</option>
-          <option value="hat(false)" selected>Aucun</option>
-        </select></label
-      >
-    </div>
+    <!-- Les menus sont générés à partir de la liste "menus" -->
+    <div class="options" id="options"></div>
 
     <script>
-      function appliquerChoix(action) {
-        const match = action.match(/^(changerRegard|couleurIris|barbe|changerCoupe|hair|skin|hat)\((.*)\)$/);
-        if (match) {
-          const handlers = { changerRegard, couleurIris, barbe, changerCoupe, hair, skin, hat };
-          let val = match[2].trim();
-          if (/^['"].*['"]$/.test(val)) val = val.slice(1, -1);
-          else if (val === "true") val = true;
-          else if (val === "false") val = false;
-          else if (/^\d+$/.test(val)) val = Number(val);
-          handlers[match[1]](val);
-          return;
-        }
-        const image = action.match(/^(nez|sourcils)\.src='([^']+)'$/);
-        if (image) {
-          document.getElementById(image[1]).src = image[2];
-          return;
-        }
-        const display = action.match(/^(?:document\.getElementById\('marques'\)|buste)\.style\.display='(none|block)'$/);
-        if (display) {
-          const id = action.startsWith("buste") ? "buste" : "marques";
-          document.getElementById(id).style.display = display[1];
-        }
-      }
-      const buste = document.getElementById("buste");
-      const base = document.getElementById("base");
-      const nez = document.getElementById("nez");
-      const sourcils = document.getElementById("sourcils");
-      const pilosite = document.getElementById("pilosite");
-      const cheveux = document.getElementById("cheveux");
-      const chapeau = document.getElementById("chapeau");
-      const lisere = document.getElementById("lisere");
-
-      let coupe = "images/cheveux/coupe1.png",
-        avecChapeau = false;
+      /* ===== Palettes de couleurs ===== */
 
       /* Base et nez reçoivent EXACTEMENT le même filtre de peau */
       const peaux = {
-        ivoire: "sepia(.36) saturate(1.16) hue-rotate(337deg) brightness(1.12)",
-        pale: "sepia(.42) saturate(1.22) hue-rotate(336deg) brightness(1.07)",
-        rose: "sepia(.43) saturate(1.42) hue-rotate(320deg) brightness(1.03)",
-        claire: "sepia(.50) saturate(1.34) hue-rotate(335deg) brightness(.98)",
-        mediterraneen: "sepia(.60) saturate(1.42) hue-rotate(338deg) brightness(.87)",
-        mate: "sepia(.67) saturate(1.48) hue-rotate(337deg) brightness(.76)",
-        brun: "sepia(.72) saturate(1.42) hue-rotate(334deg) brightness(.62)",
-        foncee: "sepia(.75) saturate(1.36) hue-rotate(330deg) brightness(.49)",
+        ivoire: { nom: "1 · Ivoire", valeur: "sepia(.36) saturate(1.16) hue-rotate(337deg) brightness(1.12)" },
+        pale: { nom: "2 · Pâle chaud", valeur: "sepia(.42) saturate(1.22) hue-rotate(336deg) brightness(1.07)" },
+        rose: { nom: "3 · Clair rosé", valeur: "sepia(.43) saturate(1.42) hue-rotate(320deg) brightness(1.03)" },
+        claire: { nom: "4 · Clair", valeur: "sepia(.50) saturate(1.34) hue-rotate(335deg) brightness(.98)" },
+        mediterraneen: { nom: "5 · Méditerranéen", valeur: "sepia(.60) saturate(1.42) hue-rotate(338deg) brightness(.87)" },
+        mate: { nom: "6 · Mat", valeur: "sepia(.67) saturate(1.48) hue-rotate(337deg) brightness(.76)" },
+        brun: { nom: "7 · Brun", valeur: "sepia(.72) saturate(1.42) hue-rotate(334deg) brightness(.62)" },
+        foncee: { nom: "8 · Foncé", valeur: "sepia(.75) saturate(1.36) hue-rotate(330deg) brightness(.49)" },
       };
 
-      const cheveuxCouleurs = {
-        gris: "none",
-        blond: "sepia(.85) saturate(1.75) hue-rotate(350deg) brightness(1.18)",
-        chatain: "sepia(.75) saturate(1.75) hue-rotate(342deg) brightness(.82)",
-        brun: "sepia(.60) saturate(1.45) hue-rotate(338deg) brightness(.60)",
-        roux: "sepia(.82) saturate(1.90) hue-rotate(326deg) brightness(.86)",
-        noir: "sepia(.10) saturate(.55) brightness(.46)",
+      /* Appliquée aux cheveux, à la barbe, aux sourcils et au liseré */
+      const couleursCheveux = {
+        gris: { nom: "Gris (original)", valeur: "none" },
+        blond: { nom: "Blond", valeur: "sepia(.85) saturate(1.75) hue-rotate(350deg) brightness(1.18)" },
+        chatain: { nom: "Châtain", valeur: "sepia(.75) saturate(1.75) hue-rotate(342deg) brightness(.82)" },
+        brun: { nom: "Brun", valeur: "sepia(.60) saturate(1.45) hue-rotate(338deg) brightness(.60)" },
+        roux: { nom: "Roux", valeur: "sepia(.82) saturate(1.90) hue-rotate(326deg) brightness(.86)" },
+        noir: { nom: "Noir", valeur: "sepia(.10) saturate(.55) brightness(.46)" },
       };
 
-      function skin(c) {
-        base.style.filter = peaux[c];
-        nez.style.filter = peaux[c];
+      const couleursIris = {
+        bleu: { nom: "Bleu", valeur: "#3075b9" },
+        bleuClair: { nom: "Bleu clair", valeur: "#80c8e9" },
+        vert: { nom: "Vert", valeur: "#39864a" },
+        vertClair: { nom: "Vert clair", valeur: "#9cbb5a" },
+        ambre: { nom: "Jaune / ambre", valeur: "#d8ae2c" },
+        marron: { nom: "Marron", valeur: "#6c3e26" },
+        noisette: { nom: "Noisette", valeur: "#a2783b" },
+        gris: { nom: "Gris", valeur: "#92999d" },
+        violet: { nom: "Violet", valeur: "#8553a6" },
+        rouge: { nom: "Rouge", valeur: "#b43e3e" },
+      };
+
+      /* ===== Liste des menus =====
+         Pour ajouter un élément (ex. un 9e nez) : déposer images/nez/nez9.png
+         puis passer "nombre" de 8 à 9.
+         - image   : chemin du fichier sans le numéro (images/<image><n>.png)
+         - nombre  : nombre de fichiers ; premier : numéro du premier (1 par défaut)
+         - aucun   : texte de l'option "rien" (valeur null)
+         - couleurs: palette à utiliser à la place des images
+         - defaut  : valeur au chargement de la page */
+      const menus = [
+        { cle: "buste", titre: "Buste", nom: "Buste", image: "base/buste", nombre: 1, aucun: "Sans buste", defaut: 1 },
+        { cle: "nez", titre: "Nez", nom: "Nez", image: "nez/nez", nombre: 8, defaut: 1 },
+        { cle: "regard", titre: "Forme du regard", nom: "Regard", image: "yeux/yeux", nombre: 7, defaut: 1 },
+        { cle: "iris", titre: "Couleur des yeux", couleurs: couleursIris, defaut: "gris" },
+        { cle: "sourcils", titre: "Sourcils", nom: "Sourcils", image: "sourcils/sourcils", nombre: 6, defaut: 1 },
+        { cle: "marques", titre: "Marques du visage", nom: "Marque", image: "marques/marques", nombre: 1, aucun: "Aucune", defaut: null },
+        { cle: "pilosite", titre: "Pilosité", nom: "Pilosité", image: "pilosite/pilosite", nombre: 13, aucun: "Aucune", defaut: null },
+        { cle: "coupe", titre: "Coupe", nom: "Coupe", image: "cheveux/coupe", premier: 0, nombre: 3, aucun: "Chauve", defaut: 1 },
+        { cle: "cheveux", titre: "Couleur des cheveux, de la barbe et des sourcils", couleurs: couleursCheveux, defaut: "gris" },
+        { cle: "peau", titre: "Peau (8 nuances progressives)", couleurs: peaux, defaut: "claire" },
+        { cle: "chapeau", titre: "Chapeau", nom: "Chapeau", image: "chapeau/chapeau", nombre: 1, aucun: "Aucun", defaut: null },
+      ];
+
+      /* ===== État de l'avatar : un choix par menu ===== */
+      const menuPar = Object.fromEntries(menus.map((m) => [m.cle, m]));
+      const avatar = Object.fromEntries(menus.map((m) => [m.cle, m.defaut]));
+
+      function fichier(cle) {
+        const n = avatar[cle];
+        return n === null ? null : `images/${menuPar[cle].image}${n}.png`;
       }
 
-      function hair(c) {
-        cheveux.style.filter = cheveuxCouleurs[c];
-        pilosite.style.filter = cheveuxCouleurs[c];
-        sourcils.style.filter = cheveuxCouleurs[c];
-        lisere.style.filter = cheveuxCouleurs[c];
+      /* Affiche un calque avec ce fichier, ou le masque si chemin est null */
+      function calque(id, chemin) {
+        const el = document.getElementById(id);
+        el.style.display = chemin ? "block" : "none";
+        if (chemin && el.getAttribute("src") !== chemin) el.src = chemin;
       }
 
-      function barbe(f) {
-        if (f === "aucune") {
-          pilosite.style.display = "none";
-        } else {
-          pilosite.src = f;
-          pilosite.style.display = "block";
-        }
+      /* ===== Rendu : applique tout l'état aux calques ===== */
+      function dessiner() {
+        calque("buste", fichier("buste"));
+        calque("nez", fichier("nez"));
+        calque("yeux", fichier("regard"));
+        calque("sourcils", fichier("sourcils"));
+        calque("marques", fichier("marques"));
+        calque("pilosite", fichier("pilosite"));
+
+        /* Avec un chapeau, la coupe est remplacée par le liseré (sauf si chauve) */
+        const avecChapeau = avatar.chapeau !== null;
+        calque("cheveux", avecChapeau ? null : fichier("coupe"));
+        calque("lisere", avecChapeau && avatar.coupe !== null ? "images/cheveux/lisere.png" : null);
+        calque("chapeau", fichier("chapeau"));
+
+        const peau = peaux[avatar.peau].valeur;
+        for (const id of ["base", "nez"]) document.getElementById(id).style.filter = peau;
+
+        const poils = couleursCheveux[avatar.cheveux].valeur;
+        for (const id of ["cheveux", "pilosite", "sourcils", "lisere"]) document.getElementById(id).style.filter = poils;
+
+        const cheminIris = `images/yeux/iris${avatar.regard}.png`;
+        if (sourceIris.getAttribute("src") !== cheminIris) sourceIris.src = cheminIris;
+        else colorierIris();
       }
 
-      function changerCoupe(f) {
-        coupe = f;
-        afficherCheveux();
-      }
-
-      function afficherCheveux() {
-        cheveux.style.display = avecChapeau || coupe === "aucune" ? "none" : "block";
-        if (coupe !== "aucune") cheveux.src = coupe;
-        lisere.style.display = avecChapeau && coupe !== "aucune" ? "block" : "none";
-      }
-
-      function hat(oui) {
-        avecChapeau = oui;
-        afficherCheveux();
-        chapeau.style.display = oui ? "block" : "none";
-      }
-
-      /* Recoloration des seuls iris : les blancs des yeux restent intacts. */
+      /* ===== Recoloration des seuls iris : les blancs des yeux restent intacts ===== */
       const canvas = document.getElementById("iris"),
         ctx = canvas.getContext("2d");
       const sourceIris = new Image();
-      let teinteIris = "#92999d";
-      sourceIris.onload = () => couleurIris(teinteIris);
-      sourceIris.src = "images/yeux/iris1.png";
-      function changerRegard(n) {
-        document.getElementById("yeux").src = "images/yeux/yeux" + n + ".png";
-        sourceIris.src = "images/yeux/iris" + n + ".png";
-      }
-      function couleurIris(hex) {
-        teinteIris = hex;
+      sourceIris.onload = colorierIris;
+
+      function colorierIris() {
         if (!sourceIris.complete || !sourceIris.naturalWidth) return;
+        const hex = couleursIris[avatar.iris].valeur;
         ctx.clearRect(0, 0, 400, 600);
         ctx.drawImage(sourceIris, 0, 0, 400, 600);
         const img = ctx.getImageData(0, 0, 400, 600),
@@ -397,8 +266,38 @@
         ctx.putImageData(img, 0, 0);
       }
 
-      /* couleur de peau par défaut */
-      skin("claire");
+      /* ===== Génération des menus ===== */
+      const zoneOptions = document.getElementById("options");
+      for (const m of menus) {
+        const choix = [];
+        if (m.couleurs) {
+          for (const [cle, c] of Object.entries(m.couleurs)) choix.push([cle, c.nom]);
+        } else {
+          if (m.aucun) choix.push(["", m.aucun]);
+          const premier = m.premier ?? 1;
+          for (let n = premier; n < premier + m.nombre; n++) choix.push([String(n), `${m.nom} ${n}`]);
+        }
+
+        const select = document.createElement("select");
+        for (const [valeur, texte] of choix) {
+          const actif = valeur === String(m.defaut ?? "");
+          select.add(new Option(texte, valeur, actif, actif));
+        }
+        select.onchange = () => {
+          if (m.couleurs) avatar[m.cle] = select.value;
+          else avatar[m.cle] = select.value === "" ? null : Number(select.value);
+          dessiner();
+        };
+
+        const champ = document.createElement("label");
+        champ.className = "champ";
+        const titre = document.createElement("span");
+        titre.textContent = m.titre;
+        champ.append(titre, select);
+        zoneOptions.append(champ);
+      }
+
+      dessiner();
     </script>
   </body>
 </html>
