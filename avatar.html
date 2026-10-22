@@ -143,16 +143,18 @@
     <script>
       /* ===== Palettes de couleurs ===== */
 
-      /* Base et nez reçoivent EXACTEMENT le même filtre de peau */
+      /* Base et nez (gris) reçoivent la teinte + la luminosité.
+         Bouche et marques (déjà en couleur) ne reçoivent que la luminosité,
+         pour garder leur couleur tout en suivant la clarté de la peau. */
       const peaux = {
-        ivoire: { nom: "1 · Ivoire", valeur: "sepia(.36) saturate(1.16) hue-rotate(337deg) brightness(1.12)" },
-        pale: { nom: "2 · Pâle chaud", valeur: "sepia(.42) saturate(1.22) hue-rotate(336deg) brightness(1.07)" },
-        rose: { nom: "3 · Clair rosé", valeur: "sepia(.43) saturate(1.42) hue-rotate(320deg) brightness(1.03)" },
-        claire: { nom: "4 · Clair", valeur: "sepia(.50) saturate(1.34) hue-rotate(335deg) brightness(.98)" },
-        mediterraneen: { nom: "5 · Méditerranéen", valeur: "sepia(.60) saturate(1.42) hue-rotate(338deg) brightness(.87)" },
-        mate: { nom: "6 · Mat", valeur: "sepia(.67) saturate(1.48) hue-rotate(337deg) brightness(.76)" },
-        brun: { nom: "7 · Brun", valeur: "sepia(.72) saturate(1.42) hue-rotate(334deg) brightness(.62)" },
-        foncee: { nom: "8 · Foncé", valeur: "sepia(.75) saturate(1.36) hue-rotate(330deg) brightness(.49)" },
+        ivoire: { nom: "1 · Ivoire", teinte: "sepia(.36) saturate(1.16) hue-rotate(337deg)", luminosite: 1.12 },
+        pale: { nom: "2 · Pâle chaud", teinte: "sepia(.42) saturate(1.22) hue-rotate(336deg)", luminosite: 1.07 },
+        rose: { nom: "3 · Clair rosé", teinte: "sepia(.43) saturate(1.42) hue-rotate(320deg)", luminosite: 1.03 },
+        claire: { nom: "4 · Clair", teinte: "sepia(.50) saturate(1.34) hue-rotate(335deg)", luminosite: 0.98 },
+        mediterraneen: { nom: "5 · Méditerranéen", teinte: "sepia(.60) saturate(1.42) hue-rotate(338deg)", luminosite: 0.87 },
+        mate: { nom: "6 · Mat", teinte: "sepia(.67) saturate(1.48) hue-rotate(337deg)", luminosite: 0.76 },
+        brun: { nom: "7 · Brun", teinte: "sepia(.72) saturate(1.42) hue-rotate(334deg)", luminosite: 0.62 },
+        foncee: { nom: "8 · Foncé", teinte: "sepia(.75) saturate(1.36) hue-rotate(330deg)", luminosite: 0.49 },
       };
 
       /* Appliquée aux cheveux, à la barbe, aux sourcils et au liseré */
@@ -231,8 +233,10 @@
         calque("lisere", avecChapeau && avatar.coupe !== null ? "images/cheveux/lisere.png" : null);
         calque("chapeau", fichier("chapeau"));
 
-        const peau = peaux[avatar.peau].valeur;
-        for (const id of ["base", "nez"]) document.getElementById(id).style.filter = peau;
+        const peau = peaux[avatar.peau];
+        const luminosite = `brightness(${peau.luminosite})`;
+        for (const id of ["base", "nez"]) document.getElementById(id).style.filter = `${peau.teinte} ${luminosite}`;
+        for (const id of ["bouche", "marques"]) document.getElementById(id).style.filter = luminosite;
 
         const poils = couleursCheveux[avatar.cheveux].valeur;
         for (const id of ["cheveux", "pilosite", "sourcils", "lisere"]) document.getElementById(id).style.filter = poils;
